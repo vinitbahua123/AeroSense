@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # PostgreSQL Database
+  # ============================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: weather-postgres
+    environment:
+      POSTGRES_DB: weather_db
+      POSTGRES_USER: weather_user
+      POSTGRES_PASSWORD: weather_pass_123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U weather_user -d weather_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================
+  # FastAPI Application
+  # ============================================
+  app:
+    build: .
+    container_name: weather-app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://weather_user:weather_pass_123@postgres:5432/weather_db
+      - PYTHONPATH=/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000
+
+  # ============================================
+  # Streamlit Dashboard
+  # ============================================
+  dashboard:
+    build: .
+    container_name: weather-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - DATABASE_URL=postgresql://weather_user:weather_pass_123@postgres:5432/weather_db
+      - PYTHONPATH=/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+    command: streamlit run src/dashboard/app.py --server.port 8501 --server.address 0.0.0.0 --server.headless true
+
+volumes:
+  postgres_data:
