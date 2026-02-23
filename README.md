@@ -1,9 +1,6 @@
-
 # 🌦️ Weather Anomaly Detection Platform
 
 Real-time weather anomaly detection and forecasting for 25 US cities. End-to-end MLOps pipeline from data ingestion to deployed dashboard.
-
-![Live Weather Map](https://claude.ai/chat/docs/screenshots/live_map.png)
 
 ## What This Does
 
@@ -15,7 +12,7 @@ Pulls live weather data from 25 US cities every 6 hours, cleans and transforms i
 
 Interactive map showing current temperature and wind speed for all 25 cities. Hover for details, color-coded by temperature.
 
-![Live Map](https://claude.ai/chat/docs/screenshots/live_map.png)
+![Live Weather Map](https://claude.ai/chat/docs/screenshots/live_map.png)
 
 ### Anomaly Feed
 
