@@ -1,3 +1,4 @@
+
 # 🌦️ Weather Anomaly Detection Platform
 
 Real-time weather anomaly detection and forecasting for 25 US cities. End-to-end MLOps pipeline from data ingestion to deployed dashboard.
@@ -9,34 +10,29 @@ Pulls live weather data from 25 US cities every 6 hours, cleans and transforms i
 ## Dashboard Pages
 
 ### Live Weather Map
-
 Interactive map showing current temperature and wind speed for all 25 cities. Hover for details, color-coded by temperature.
 
-![Live Weather Map](https://claude.ai/chat/docs/screenshots/live_map.png)
+![Live Weather Map](docs/screenshots/live_map.png)
 
 ### Anomaly Feed
-
 Detected weather anomalies with severity scores, city breakdown, z-score distribution, and timeline visualization.
 
-![Anomaly Feed](https://claude.ai/chat/docs/screenshots/anomaly_feed.png)
+![Anomaly Feed](docs/screenshots/anomaly_feed.png)
 
 ### City Deep Dive
-
 Select any city to see temperature timeline with anomaly bands (±3σ), z-score history, humidity, wind speed, and precipitation charts.
 
-![City Deep Dive](https://claude.ai/chat/docs/screenshots/city_deep_dive.png)
+![City Deep Dive](docs/screenshots/city_deep_dive.png)
 
 ### Platform Stats
-
 Pipeline health overview showing medallion architecture layers, record counts, and tech stack.
 
-![Platform Stats](https://claude.ai/chat/docs/screenshots/platform_stats.png)
+![Platform Stats](docs/screenshots/platform_stats.png)
 
 ### REST API
-
 8 endpoints with auto-generated Swagger documentation.
 
-![API Docs](https://claude.ai/chat/docs/screenshots/api_docs.png)
+![API Docs](docs/screenshots/api_docs.png)
 
 ## Architecture
 
